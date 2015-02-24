@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="Outer.js" type="text/javascript"></script>
+</head>
+<body>
+	<input type="button" value="내부 윈도우에 다른 문서 열기" id="btn-open-doc"/>
+	
+	<div style="width:500px; height:300px;">
+		<iframe src="inner.html" style="width:500px; height:300px;"></iframe>
+	</div>  <!-- inner Frame 은 css의 영향을 받지 않게 할 때 자주 사용함 --> 
+</body>
+</html>
