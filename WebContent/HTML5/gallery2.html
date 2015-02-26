@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../css/reset.css" rel="stylesheet" type="text/css"/>
+<style>
+
+@-webkit-keyframes slide-up{
+	from {
+		margin-top: 25px;
+		opacity: 0.3;
+	}
+	
+	50% {
+		margin-top: 50px;
+		opacity: 0.7;
+	}
+	
+	to {
+		margin-top: 0px;
+		opacity: 1;
+	}
+}
+
+.gallery {
+	width: 500px;
+	height: 400px;
+	border: 1px solid #000;
+}
+
+.gallery-show-box {
+	width: 100%;
+	height: 300px;
+	background: #828282;
+	overflow: hidden;
+}
+
+.gallery-show-box>img {
+	display: block;
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 250px;
+	/* transform-origin: right top;
+	transform: rotate(0deg); */
+	/* opacity: 0.5;
+	margin-top: 50px; */
+	/* transition-property: opacity, margin-top; */	/*height는 안됨(기존의 css를 변형하는데는 문제발생 따라서 scaleY(); 이용!!)*/
+	/* transition-duration: 2s, 2s; */
+	/* transition-duration: 2s, all; */	/*속성이 여러개 일때 뒤에 같은 duration 을 준다면 뒤에 all 해도됨*/
+	/*부모영역에 두면 :hover 영역에 두지 않아도 같이 적용되서 마우스를 hover 상태에서 벗어날때도 적용되게 하려면 위에 두어야함*/
+	
+	/* transition: 2s opacity ease-in-out, 2s margin-top cubic-bezier(0.5, -0.5, 0.9, 1.5); */
+	/* transition: 1s margin-top steps(3, start); */	/*계단식 진행 (3조각) end/start 1s가 시작할 때 적용/ 지나고 적용되느냐 */
+	
+}
+
+.gallery-show-box>img:hover {
+	/* transform-origin: right top; */
+	/* transform: rotate(-10deg);	
+	/* transform: scaleX(-1); */				/* X축방향으로 -1 대칭됨 */ 
+	/* transform: translate(50px, 0px); */		/*이동*/
+	/* transform: skewX(10deg); */ 				/*왜곡, 위의 변형들 x,y축 가능함 안쓰면 translate와 같이 x,y 둘다 지정해줌*/
+	/* transform: rotate(10deg) scaleX(-1); */ 	/*여러 변형 속성을 한번에 적용할 때, 만약 따로 준다면 아래 것이 실행됨(덮어씌움)*/
+	/* opacity: 1; */									/*아래 transition 을 주지 않는다면 순간적으로 깜박이듯이*/
+	/* margin-top: 0px; */
+	/* transition-property: opacity; */ 		/*opacity 라는 속성을 변화시킬 것이다.*/
+	/* transition-duration: 2s; */				/*그 속성의 duration을 2 second 로 ! */
+	
+	-webkit-animation-name: slide-up;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease;
+}
+
+.gallery-pic-box {
+	width: 100%;
+	height: 100px;
+	background: #000;
+}
+
+.gallery-pic-list {
+	position: absolute;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	display: inline-block;
+	border: 1px solid red;
+	width: 2000px;
+}
+
+.gallery-pic-clipper {
+	position: relative;
+	width: 450px;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+}
+
+.gallery-pic-item {
+	float: left;
+	height: 100%;
+	width: 80px;
+	border: 1px solid #ffffff;
+}
+
+.gallery-prev-button {
+	width: 25px;
+	height: 100%;
+	float: left;
+	background: green;
+}
+
+.gallery-next-button {
+	width: 25px;
+	height: 100%;
+	float: left;
+	background: green;
+}
+
+.gallery-pic {
+	height: 100%;
+	width: 100%;
+}
+
+.gallery-file {
+	display: none;
+}
+</style>
+
+</head>
+<script></script>
+<body>
+	<div class="gallery">
+		<div class="gallery-show-box"></div>
+		<div class="gallery-pic-box">
+			<div class="gallery-prev-button">←</div>
+			<div class="gallery-pic-clipper">
+				<ul class="gallery-pic-list" id="gallery-pic-list">
+					<li class="gallery-pic-item">
+						<a href="http://newlecture.com" id="gallery-pic1">
+						<img class="gallery-pic" src="pic1.jpg" />
+						</a>
+					</li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic2" src="pic2.jpg" /></li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic3" src="pic3.jpg" /></li>
+					<li class="gallery-pic-item">
+						<a href="http://newlecture.com" id="gallery-pic1">
+						<img class="gallery-pic" src="pic1.jpg" />
+						</a>
+					</li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic2" src="pic2.jpg" /></li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic3" src="pic3.jpg" /></li>
+					<li class="gallery-pic-item">
+						<a href="http://newlecture.com" id="gallery-pic1">
+						<img class="gallery-pic" src="pic1.jpg" />
+						</a>
+					</li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic2" src="pic2.jpg" /></li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic3" src="pic3.jpg" /></li>
+					<li class="gallery-pic-item">
+						<a href="http://newlecture.com" id="gallery-pic1">
+						<img class="gallery-pic" src="pic1.jpg" />
+						</a>
+					</li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic2" src="pic2.jpg" /></li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic3" src="pic3.jpg" /></li>
+					<li class="gallery-pic-item">
+						<a href="http://newlecture.com" id="gallery-pic1">
+						<img class="gallery-pic" src="pic1.jpg" />
+						</a>
+					</li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic2" src="pic2.jpg" /></li>
+					<li class="gallery-pic-item"><img class="gallery-pic" id="gallery-pic3" src="pic3.jpg" /></li>
+				</ul>
+			</div>
+			<div class="gallery-next-button">→</div>
+		</div>
+	</div>
+	
+	<div>
+		<input type="file" class="gallery-file" /> 
+		<span class="file-button">파일선택</span>
+	</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var page = 1;
+
+	window.onload = function(){
+		var btnReq = document.querySelector("#btn-req");
+		btnReq.onclick = function(){
+			/* var x = 3;
+			//eval("var y = x + 2");
+			var y = eval([{id:'newlec', age:20, name:'뉴렉'}]);	// execute value 로 추측됨(값을 실행시켜줌.)
+			alert(y[0].id); */
+			
+			/* var oReq = new XMLHttpRequest();
+		   	if (oReq) {
+		      	oReq.open("GET", "data.jsp", false);	// get방식 호출, url:data.jsp, false면 동기 / true면 비동기
+		      	oReq.send();
+		      	var data = eval(oReq.responseText);		      
+		      	alert(data[1].age);
+		      	console.log(oReq.statusText); 
+		   	} */
+		   	
+		   	var oReq = new XMLHttpRequest();
+		   	if (oReq) {
+		   		oReq.onreadystatechange = function(){
+		   			if(oReq.readyState == 4)			
+	   				{
+			   			var data = eval(oReq.responseText);		      
+				      	alert(data[0].title);
+	   				}
+		   				// READYSTATE_LOADING (1): A request has been opened, but the send method has not been called.
+						// READYSTATE_LOADED (2): The send method has been called. No data is available yet.
+						// READYSTATE_INTERACTIVE (3): Some data has been received; however, responseText is not available.
+						// READYSTATE_COMPLETE (4): All the data has been received.
+		   		}
+		      	oReq.open("GET", "data.jsp?p=" + page, true);		// 동기식으로 할 때, 순서 없이 다같이 호출되면 결과값이 없거나, 오류발생 위와같이 해줌
+		      	oReq.send();
+		      	/* var data = eval(oReq.responseText);		      
+		      	alert(data[1].age);
+		      	console.log(oReq.statusText);  */
+		   	}
+		   	
+		   	page++;
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="요청" id="btn-req" />
+</body>
+</html>
